@@ -1,0 +1,72 @@
+@font-face {
+  font-family: 'pepspicto';
+  src: url('../../../fonts/pepspicto.eot');
+  src: url('../../../fonts/pepspicto.eot#iefix') format('embedded-opentype'),
+       url('../../../fonts/pepspicto.woff2') format('woff2'),
+       url('../../../fonts/pepspicto.woff') format('woff'),
+       url('../../../fonts/pepspicto.ttf') format('truetype'),
+       url('../../../fonts/pepspicto.svg#pepspicto') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+ 
+[class^="picto-"]:before, [class*=" picto-"]:before {
+  font-family: "pepspicto";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  text-align: center;
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+ 
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Font smoothing */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.picto-pencil:before { content: '\e800'; }
+.picto-dashboard:before { content: '\e801'; }
+.picto-files:before { content: '\e802'; }
+.picto-priority:before { content: '\e803'; }
+.picto-baby:before { content: '\e804'; } 
+.picto-house:before { content: '\e805'; } 
+.picto-doc:before { content: '\e806'; } 
+.picto-rsa:before { content: '\e807'; } 
+.picto-briefcase:before { content: '\e808'; } 
+.picto-doc2:before { content: '\e809'; } 
+.picto-arrow-down:before { content: '\e80a'; } 
+.picto-arrow-side:before { content: '\e80b'; } 
+.picto-arrow-up:before { content: '\e80c'; } 
+.picto-clock:before { content: '\e80d'; } 
+.picto-print:before { content: '\e80e'; } 
+.picto-envelope:before { content: '\e80f'; } 
+.picto-location-1:before { content: '\e810'; } 
+.picto-location:before { content: '\e811'; } 
+.picto-modify:before { content: '\e812'; } 
+.picto-smartphone:before { content: '\e813'; } 
+.picto-mouse:before { content: '\e814'; } 
+.picto-telephone:before { content: '\e815'; } 
+.picto-folder:before { content: '\e816'; } 
+.picto-user:before { content: '\e817'; } 
+.picto-internet:before { content: '\e818'; } 
+.picto-check:before { content: '\e819'; } 
+.picto-paperclip:before { content: '\e81a'; } 
+.picto-add:before { content: '\e81b'; } 
+.picto-clipboard:before { content: '\e81d'; } 
+.picto-move:before { content: '\e81e'; } 
+.picto-talk:before { content: '\e81f'; } 
+.picto-photo:before { content: '\e820'; } 
+.picto-cancel-circled:before { content: '\e821'; } 
+.picto-calendar:before { content: '\e822'; } 
+
+.picto-smartphone.peps-picto-equalized { font-size: 1.1em; }
+.picto-envelope.peps-picto-equalized { font-size: 0.8em; }

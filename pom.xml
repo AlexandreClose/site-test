@@ -1,0 +1,257 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <artifactId>lutece-site-pom</artifactId>
+        <groupId>fr.paris.lutece.tools</groupId>
+        <version>2.0.4</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>fr.paris.lutece</groupId>
+    <artifactId>peps</artifactId>
+    <packaging>lutece-site</packaging>
+    <version>1.5.1-SNAPSHOT</version>
+    <name>Site peps</name>
+
+    <repositories>
+        <repository>
+            <id>lutece</id>
+            <name>luteceRepository</name>
+            <url>http://dev.lutece.paris.fr/maven_repository</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <dependencies>
+    	
+    	<!-- Lutece Core -->
+        <dependency>
+            <groupId>fr.paris.lutece</groupId>
+            <artifactId>lutece-core</artifactId>
+            <version>[4.9.9,)</version>
+            <type>lutece-core</type>
+        </dependency>
+        
+        <!-- Gestion de contenu -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>plugin-document</artifactId>
+            <version>4.0.8</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- SEO -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>plugin-seo</artifactId>
+            <version>3.3.0</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Gestion des contacts -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>plugin-contact</artifactId>
+            <version>4.0.2</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Extend - Base pour interactions supplémentaires avec les ressources -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>plugin-extend</artifactId>
+            <version>1.3.3</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Rubrique vers les pages filles de la page courante -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>plugin-childpages</artifactId>
+            <version>4.1.0</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Extend : Système de commentaires -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>module-extend-comment</artifactId>
+            <version>1.1.7</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Extend : Système d'avis -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>module-extend-feedback</artifactId>
+            <version>1.0.4</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Extend : Liens aux réseaux sociaux -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>module-extend-opengraph</artifactId>
+            <version>1.2.2</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Intégration des outils Google -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>plugin-gtools</artifactId>
+            <version>1.2.4</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Portlet HTML avec éditeur WYSIWYG -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>plugin-html</artifactId>
+            <version>3.1.0</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Intégration de captchas sur les formulaires -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>plugin-captcha</artifactId>
+            <version>2.1.1</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Statistiques sur les utilisations de la recherche -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>plugin-searchstats</artifactId>
+            <version>4.3.1</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Affichage des informations du système en back-office -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>plugin-systeminfo</artifactId>
+            <version>3.1.3</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Nuage de tags -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>plugin-tagcloud</artifactId>
+            <version>4.1.0</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Gestion des thèmes -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>plugin-theme</artifactId>
+            <version>4.1.1</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Conception de formulaires -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>plugin-form</artifactId>
+            <version>4.1.5</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Calendrier (compatible iCalendar) -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>plugin-calendar</artifactId>
+            <version>4.1.1</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Captcha pour formulaires Lutece -->
+		<!-- <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>module-captcha-jcaptcha</artifactId>
+            <version>2.1.14-SNAPSHOT</version>
+            <type>lutece-plugin</type>
+	</dependency>-->
+
+        
+		<!-- Plugin métier PEPS -->
+
+         <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>plugin-peps</artifactId>
+            <version>1.5.1-SNAPSHOT</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Systeme de login -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>plugin-mylutece</artifactId>
+            <version>3.3.0</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>module-mylutece-database</artifactId>
+            <version>4.0.0</version>
+            <type>lutece-plugin</type>
+        </dependency>
+         <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>module-mylutece-openam</artifactId>
+            <version>1.0.4</version>
+            <type>lutece-plugin</type>
+        </dependency>        
+<!--         <dependency> -->
+<!--             <groupId>fr.paris.lutece.plugins</groupId> -->
+<!--             <artifactId>plugin-identity-provider</artifactId> -->
+<!--             <version>1.0.1</version> -->
+<!--             <type>lutece-plugin</type> -->
+<!--         </dependency> -->
+        <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>plugin-identitystore-openamprovider</artifactId>
+            <version>1.0.1</version>
+            <type>lutece-plugin</type>
+        </dependency>
+         <!-- Gestion wsso -->
+         <dependency>
+    		<artifactId>plugin-adminauthenticationwsso</artifactId>
+    		<groupId>fr.paris.lutece.plugins</groupId>
+    		<version>2.1.4</version>
+    		<type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Création de plugins -->
+          <dependency>
+            <groupId>fr.paris.lutece.plugins</groupId>
+            <artifactId>plugin-pluginwizard</artifactId>
+            <version>4.0.0</version>
+            <type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Gestion des libellés -->
+        <dependency>
+    		<artifactId>plugin-sitelabels</artifactId>
+    		<groupId>fr.paris.lutece.plugins</groupId>
+    		<version>1.1.3-SNAPSHOT</version>
+    		<type>lutece-plugin</type>
+        </dependency>
+        
+        <!-- Gestion des profiles -->
+         <dependency>
+    		<artifactId>plugin-profiles</artifactId>
+    		<groupId>fr.paris.lutece.plugins</groupId>
+    		<version>2.0.3</version>
+    		<type>lutece-plugin</type>
+        </dependency>             
+		
+ </dependencies>
+</project>

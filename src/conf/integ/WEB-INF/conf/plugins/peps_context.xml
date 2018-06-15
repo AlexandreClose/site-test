@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- <bean id="propertyConfigurer" -->
+	<!-- class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> -->
+	<!-- <property name="fileEncoding" value="UTF8" /> -->
+	<!-- <property name="location"> -->
+	<!-- <value>/WEB-INF/conf/plugins/peps.properties</value> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+	<bean class="fr.paris.lutece.plugins.peps.business.WebsiteResourceDAO"
+		id="peps.websiteResourceDAO" />
+	<bean class="fr.paris.lutece.plugins.peps.business.PairingUserDAO"
+		id="peps.pairingUserDAO" />
+	<bean class="fr.paris.lutece.plugins.peps.services.AddressService"
+		id="peps.addressService" />
+	<bean class="fr.paris.lutece.plugins.peps.business.FileActiveDAO"
+		id="peps.fileActiveDAO" />
+	<bean id="peps.roadMapDAO" class="fr.paris.lutece.plugins.peps.business.RoadMapDAO" />
+	<bean id="peps.roadMapLanguageDAO"
+		class="fr.paris.lutece.plugins.peps.business.RoadMapLanguageDAO" />
+	<bean id="peps.roadmapStepDAO" class="fr.paris.lutece.plugins.peps.business.RoadmapStepDAO" />
+	<bean id="peps.roadmapStepTypeDAO"
+		class="fr.paris.lutece.plugins.peps.business.RoadmapStepTypeDAO" />
+	<bean id="peps.roadmapApproachDAO"
+		class="fr.paris.lutece.plugins.peps.business.RoadmapApproachDAO" />
+	<bean id="peps.roadmapApproachTypeDAO"
+		class="fr.paris.lutece.plugins.peps.business.RoadmapApproachTypeDAO" />
+	<bean id="peps.roadmapStepTypeApproachTypeDAO"
+		class="fr.paris.lutece.plugins.peps.business.RoadmapStepTypeApproachTypeDAO" />
+	<bean id="peps.placeDAO" class="fr.paris.lutece.plugins.peps.business.PlaceDAO" />
+	<bean id="peps.placeTypeDAO" class="fr.paris.lutece.plugins.peps.business.PlaceTypeDAO" />
+	<bean class="fr.paris.lutece.plugins.peps.business.SocialWorkerDao"
+		id="peps.socialWorkerDAO" />
+	<bean id="peps.documentRequestDAO"
+		class="fr.paris.lutece.plugins.peps.business.DocumentRequestDAO" />
+	<bean id="peps.UserDAO" class="fr.paris.lutece.plugins.peps.business.UserDAO" />
+
+	<bean id="peps.blobStoreService"
+		class="fr.paris.lutece.plugins.blobstore.service.database.DatabaseBlobStoreService">
+		<property name="name" value="peps.blobStoreService" />
+	</bean>
+	<bean id="peps.documentDAO" class="fr.paris.lutece.plugins.peps.business.DocumentDAO">
+		<property name="blobStoreService" ref="peps.blobStoreService" />
+	</bean>
+	<bean id="peps.documentTypeDAO" class="fr.paris.lutece.plugins.peps.business.DocumentTypeDAO" />
+	<bean id="peps.documentCategoryDAO"
+		class="fr.paris.lutece.plugins.peps.business.DocumentCategoryDAO" />
+	<bean id="peps.pepsUploadHandler" class="fr.paris.lutece.plugins.peps.handler.PepsUploadHandler" />
+	<bean id="peps.gEDTypeDAO" class="fr.paris.lutece.plugins.peps.business.GEDTypeDAO" />
+	<bean id="peps.transcodingElementDAO" class="fr.paris.lutece.plugins.peps.business.TranscodingElementDAO" />
+	<bean id="peps.contactDAO" class="fr.paris.lutece.plugins.peps.business.ContactDAO" />
+    <bean id="peps.offerThemeDAO" class="fr.paris.lutece.plugins.peps.business.OfferThemeDAO" />
+    <bean id="peps.offerSubthemeDAO" class="fr.paris.lutece.plugins.peps.business.OfferSubthemeDAO" />
+    <bean id="peps.offerRubricDAO" class="fr.paris.lutece.plugins.peps.business.OfferRubricDAO" />
+    <bean id="peps.offerDAO" class="fr.paris.lutece.plugins.peps.business.OfferDAO" />
+    <bean id="peps.offerInternetDAO" class="fr.paris.lutece.plugins.peps.business.OfferInternetDAO" />
+    <bean id="peps.offerWithInscriptionDAO" class="fr.paris.lutece.plugins.peps.business.OfferWithInscriptionDAO" />
+    <bean id="peps.inscriptionToOfferDAO" class="fr.paris.lutece.plugins.peps.business.InscriptionToOfferDAO" />
+    <bean id="peps.offerDocumentDAO" class="fr.paris.lutece.plugins.peps.business.OfferDocumentDAO" />
+    <bean id="peps.offerAccessConditionDAO" class="fr.paris.lutece.plugins.peps.business.OfferAccessConditionDAO" />
+    <bean id="peps.offerAccessConditionNameDAO" class="fr.paris.lutece.plugins.peps.business.OfferAccessConditionNameDAO" />
+    <bean id="peps.offerAccessConditionTypeDAO" class="fr.paris.lutece.plugins.peps.business.OfferAccessConditionTypeDAO" />
+    <bean id="peps.offeringStructureDAO" class="fr.paris.lutece.plugins.peps.business.OfferingStructureDAO" />
+	<bean id="peps.proUserDAO" class="fr.paris.lutece.plugins.peps.business.ProUserDAO" />
+	
+	<!-- library notifyGru -->
+	<bean id="lib-notifygru.apiManagerTransport" class="fr.paris.lutece.plugins.librarynotifygru.rs.service.NotificationTransportApiManagerRest">
+	  <property name="notificationEndPoint">
+	    <value>https://g94-gru-notify-api.rec.apps.paris.mdp/notification/v1/send</value>
+	  </property>
+	  <property name="apiManagerEndPoint">
+	    <value>https://g94-gru-notify-api.rec.apps.paris.mdp/token</value>
+	  </property>
+	  <property name="apiManagerCredentials">
+	    <value>WjJacjNBZkgzVVhpWElSd2Zza3ZhY1J5djNvYTpwcGFMNGZkbVVreWNqU1BEUDV0UzRSSjZnWWNh</value>
+	  </property>
+	</bean>
+	<bean id="lib-notifygru.notificationService" class="fr.paris.lutece.plugins.librarynotifygru.services.NotificationService">
+	  <constructor-arg ref="lib-notifygru.apiManagerTransport"/>
+	</bean>
+	
+	<bean class="fr.paris.lutece.plugins.peps.services.MailServiceBouchon"
+		id="peps.mailService" />
+		
+	<bean class="fr.paris.lutece.plugins.peps.services.IsisService"
+		id="peps.isisService" />
+
+</beans>

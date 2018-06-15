@@ -1,0 +1,186 @@
+/******************************************
+/* SPECIFIC LUTECE DEFAULT THEME STYLES   *
+******************************************/
+/* CORE STYLES */
+
+
+/* Fix for fixed-nav-bar*/
+body{
+	padding-top: 110px;
+	background-color: #0A4871;
+	color: white;
+}
+
+/* ------------------ HEADER ------------- */
+
+header .navbar-inverse {
+	background: #00739A;
+	border: none; /*Header : Bordure inferieure, menu toggled ou non */
+}
+
+header .navbar-header .navbar-toggle {
+	float: left; /*Bouton toggle : a gauche et sans bordure*/
+	border: none;
+}
+
+header .navbar-inverse .navbar-toggle:focus, header .navbar-inverse .navbar-toggle:hover {
+	background-color: transparent; /*Bouton toggle : Effets hover */
+}
+
+header .navbar-inverse .navbar-collapse, header .navbar-inverse .navbar-form {
+	border: none; /*Menu toggled : Ligne de separation entre les elements*/
+}
+
+header .navbar-brand {
+	float: none;		/*Pour que le logo prenne la place dans le menu */
+	display: flex;		/*Pour centrer le logo verticalement*/
+	padding: 0;
+}
+
+header .navbar-brand img {
+	height: 70%;
+	width: auto;
+	align-self: center; /*Pour centrer le logo verticalement*/
+	margin: auto; /* Pour centrer le logo horizontalement dans l'espace dispo du menu*/
+}
+
+header .navbar-header-level2 {
+	background: white;
+}
+
+#logo-peps {
+	margin-top: -10px;
+	height: 105%;
+	height: calc(95% + 10px);
+}
+
+.banner-mon-compte__connexion-wrapper {
+	position: initial;
+	top: initial;
+	right: initial;
+}
+
+.banner-mon-compte__connexion-wrapper .banner-mon-compte__connexion-avatar, .banner-mon-compte__connexion-wrapper .banner-mon-compte__connected-avatar {
+	background: white;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	width: 40px;
+	height: 40px;
+	margin-top: 5px;
+	color: #0A4871;
+}
+
+.banner-mon-compte__connexion-wrapper .banner-mon-compte__connexion-avatar, .banner-mon-compte__connexion-wrapper .banner-mon-compte__connected-avatar .fa {
+	padding-left: 8px;
+	padding-top: 2px;
+	font-size: 1.6em;
+}
+
+.banner-mon-compte__connexion-wrapper .banner-mon-compte__connexion-avatar .banner-mon-compte__my-account::after{
+	color: #0A4871;
+}
+
+.navbar-banner-mcp {
+	float: right;
+	margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+	.banner-mon-compte__connexion-wrapper .banner-mon-compte__connexion-avatar:hover {
+		width: 40px;
+		height: 40px;
+	}
+}
+
+.banner-mon-compte__connexion-wrapper .banner-mon-compte__connexion-avatar:hover {
+	width: 175px;
+}
+
+.banner-mon-compte__connexion-wrapper .banner-mon-compte__connexion-avatar span.banner-mon-compte__my-account {
+	transform: translate(25px, -50%);
+}
+
+/* ----------- DEFAULT LUTECE -----------*/
+
+/* img list styles */
+img.thumblist-mini{width:24px;height:24px;}
+img.thumblist-small{width:32px;height:32px;}
+img.thumblist-medium{width:64px;height:64px;}
+img.thumblist-large{width:128px;height:128px;}
+/* END CORE STYLES */
+
+/* avatar default styles */
+.avatar{margin:2px; border:1px solid #000;padding:2px;margin-right:10px; }
+.avatar-mini{width:18px;height:18px;}
+.avatar-small{width:32px;height:32px;}
+.avatar-large{width:64px;height:64px;}
+.avatar-huge{width:128px;height:128px;}
+
+/* --------------- FOOTER -------------- */
+
+footer {
+	text-align: center;
+}
+
+#footer-social {
+	background: transparent;
+	clear: both;
+	margin: 0 auto;
+	padding: 40px 0 30px;
+}
+
+#footer-social ul li {
+	display:inline-block;
+}
+
+#footer-social ul li a::before {
+    width: 45px;
+    height: 45px;
+    padding: 13px;
+    border: 2px solid #cccccc;
+    border-radius: 50%;
+    font: 2.3rem FontAwesome;
+    color: #cccccc;
+}
+
+#footer-social .facebook::before { content: "\f230"; }
+
+#footer-social .twitter::before { content: "\f099"; }
+
+#footer-social .contact::before { content: "\f0e0"; }
+
+#footer-peps {
+	background: #eee;
+	border-radius: 0;
+	padding: 10px 10px 5px 10px;
+}
+
+#footer-peps .navbar-nav, #footer-social .navbar-nav {
+	float:none;
+	display: inline-block;
+}
+
+#footer-peps .navbar-nav > li > a {
+	color: #333;
+	box-shadow: none;
+}
+
+#footer-peps .navbar-nav > li > a:focus, #footer-peps .navbar-nav > li > a:hover {
+	color: black;
+	text-decoration: underline;
+}
+
+#footer-peps .navbar-brand, #footer-peps .navbar-nav > li > a {
+	text-shadow: none;
+}
+
+#footer-peps .navbar-brand img {
+	max-width: 200px;
+	height: auto;
+}
+
+@media screen and (min-width: 1090px){
+	#footer-peps .navbar-brand {
+    	margin-right: 60px;
+	}
+}

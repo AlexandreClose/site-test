@@ -1,0 +1,24 @@
+<ul class="nav navbar-nav navbar-banner-mcp">
+	<div class="banner-mon-compte__connexion-wrapper">
+		<!-- banner-mon-compte begin -->
+		<div class="banner-mon-compte__connexion-wrapper">
+			<a class="banner-mon-compte__connexion-avatar" href="">
+			<span class="picto-peps picto-user"></span>
+			<span class="banner-mon-compte__my-account"></span>
+			</a>
+		</div>
+		<!-- banner-mon-compte end -->
+	</div>
+</ul>
+
+<noscript>
+    <#if user?has_content>
+        <li><a href="${url_dologout}"><span class="glyphicon glyphicon-off"></span> Déconnexion</a></li>
+    <#else>
+        <li><a href="${url_dologin}"> S'authentifier</a></li>
+    </#if>
+</noscript>
+<script src="https://moncompte.paris.fr/moncompte/assets/js/banner-moncompte.js"></script>
+<script>
+initBanner();
+</script>

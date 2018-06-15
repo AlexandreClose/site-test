@@ -1,0 +1,522 @@
+
+
+
+
+<body class="skin-blue-light hold-transition sidebar-mini"
+	data-spy="scroll" data-target="#scrollspy">
+	<div class="wrapper">
+		<header class="main-header" role="banner" data-menu="${menu_pos}">
+			<#if user.userLevel==4><#assign classNavbar="navbar-pro"><#else><#assign classNavbar=""></#if>
+			<nav class="navbar navbar-fixed-top ${classNavbar}" role="navigation">
+				<div class="navbar-header">
+					<a href="${admin_url}"
+						title="#i18n{portal.users.admin_header.title.viewSite} ${site_name}"
+						class="navbar-brand"> <img src="images/logo_peps_admin.png"
+						id="logo_peps_admin" class="img-responsive"
+						title="#i18n{portal.users.admin_header.title.viewSite} ${site_name}"
+						alt="${site_name}">
+					</a>
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar-collapse">
+						<i class="fa fa-bars"></i>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="navbar-collapse">
+					<ul id="top" class="nav navbar-nav">
+						<#list feature_group_list as feature_group> <#if feature_group.features?size &gt; 1>
+								<li class="dropdown tasks-menu"><a data-toggle="dropdown" class="dropdown-toggle" id="dLabel${feature_group.id}Header" href="${admin_url}#${feature_group.id}">
+								${feature_group.label} <b class="caret"></b>
+						</a>
+									<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel${feature_group.id}Header">
+										<#list feature_group.features as feature>
+											<li class="menu">
+												<#if !feature.externalFeature> <a href="${feature.url}?plugin_name=${feature.pluginName}">${feature.name}</a>
+													<#else>
+														<a href="${feature.url}">
+															<#if feature.iconUrl?has_content> <i class="${feature.iconUrl}"></i></#if> ${feature.name}
+														</a>
+												</#if>
+											</li>
+										</#list>
+									</ul>
+								</li>
+								<#else>
+									<#list feature_group.features as feature>
+										<li>
+											<#if !feature.externalFeature> <a href="${feature.url}?plugin_name=${feature.pluginName}">${feature.name}</a>
+												<#else>
+													<a href="${feature.url}">
+														<#if feature.iconUrl?has_content> <i class="${feature.iconUrl}"></i> </#if> ${feature.name}
+													</a>
+											</#if>
+										</li>
+									</#list>
+							</#if>
+						</#list>
+					</ul>
+
+					<#if user.userLevel==4>
+					<ul class="nav navbar-nav  search-user">
+						<li>
+							<div id="search">
+								<input type="text" name="q" class="form-control"
+									id="search_input"> <i id="search_icon"
+									class="fa fa-search"></i>
+							</div>
+						</li>
+						<li class="pull-right"><a href="#" data-toggle="modal"
+							data-target="#modal-advanced-search"><span
+								class="picto-peps picto-add"></span>#dskey{sitelabels.site_property.pro_recherche_avancee}</a>
+							<div class="modal fade" id="modal-advanced-search">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header bg-peps-red">
+											<button type="button" class="close-modal"
+												data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+											<h4 class="modal-title">#dskey{sitelabels.site_property.pro_recherche_avancee}</h4>
+										</div>
+										<div id="modal-content" class="box-content">
+											<form id="advanced_search_form" class="form-horizontal" action="jsp/admin/plugins/peps/socialworker/SocialWorkerMyFiles.jsp#searchresult"
+												method="post" name="advanced_search_form" role="form">
+												<input type="hidden" name="advanced_search" value="advanced_search">
+												<div id="advanced-search-perimeter">
+													<div id="errorsAdvancedSearch" class="alert alert-danger" hidden>
+														<strong>Erreur(s)</strong>
+														<ul id="errorsAdvancedSearch-list">
+														</ul>
+													</div>
+													<fieldset class="form-horizontal">
+														<div class="form-check">
+															<label class="form-check-label"> <input
+																type="radio" class="form-check-input"
+																name="perimeter" id="perimeter1" value="M"
+																checked>
+																#dskey{sitelabels.site_property.pro_recherche_avancee_perimetre_moi}
+															</label>
+														</div>
+														<div class="form-check inline">
+															<label class="form-check-label"> <input
+																type="radio" class="form-check-input"
+																name="perimeter" id="perimeter2" value="O">
+																#dskey{sitelabels.site_property.pro_recherche_avancee_perimetre_autre}
+															</label> <input id="autocomplete-socialworker-name" type="text"
+																placeholder="#i18n{peps.socialworker.admin_header.advanced_search_form_perimetre_placeholder_lastname}" />
+															<input class="hidden" type="text"
+																id="selected_socialworker_id" name="ts-id" />
+														</div>
+														<div class="form-check">
+															<label class="form-check-label"> <input
+																type="radio" class="form-check-input"
+																name="perimeter" id="perimeter3" value="S">
+																#dskey{sitelabels.site_property.pro_recherche_avancee_perimetre_monservice}
+															</label>
+														</div>
+														<div class="form-check">
+															<label class="form-check-label"> <input
+																type="radio" class="form-check-input"
+																name="perimeter" id="perimeter4" value="T">
+																#dskey{sitelabels.site_property.pro_recherche_avancee_perimetre_tout}
+															</label>
+														</div>
+													</fieldset>
+												</div>
+												<div id="advanced-search-from">
+
+													<div class="box-body">
+														<div class="form-group row">
+															<label for="lastname" class="col-sm-4 control-label">#i18n{peps.socialworker.admin_header.advanced_search_form_lastname}</label>
+															<div class="col-sm-8">
+																<input type="text" class="form-control input-sm" id="lastname" name="lastname" oninput="advancedSearchEmptyField()"/>
+															</div>
+														</div>
+														<div class="form-group row">
+															<label for="firstname" class="col-sm-4 control-label">#i18n{peps.socialworker.admin_header.advanced_search_form_firstname}</label>
+															<div class="col-sm-8">
+																<input type="text" class="form-control input-sm" id="firstname" name="firstname" oninput="advancedSearchEmptyField()" />
+															</div>
+														</div>
+														<div class="form-group row">
+															<label for="birthdate" class="col-sm-4 control-label">#i18n{peps.socialworker.admin_header.advanced_search_form_birthdate}</label>
+															<div class="col-sm-8">
+																<input type="text" class="form-control input-sm"
+																	id="birthdate" name="birthdate"
+																	placeholder="#i18n{peps.socialworker.admin_header.advanced_search_form_birthdate_placeholder}"
+																	data-inputmask="'alias': 'mm/dd/yyyy'" data-mask oninput="advancedSearchEmptyField()"/>
+															</div>
+														</div>
+														<div class="form-group row">
+															<label for="isis-num" class="col-sm-4 control-label">#i18n{peps.socialworker.admin_header.advanced_search_form_isis_num}</label>
+															<div class="col-sm-8">
+																<input type="number" class="form-control input-sm" name="isis-num" id="isis-num" oninput="advancedSearchEmptyField()"/>
+															</div>
+														</div>
+														<div class="form-group row">
+															<label for="caf-num" class="col-sm-4 control-label">#i18n{peps.socialworker.admin_header.advanced_search_form_caf_num}</label>
+															<div class="col-sm-8">
+																<input type="number" class="form-control input-sm" name="caf-num" id="caf-num" oninput="advancedSearchEmptyField()"/>
+															</div>
+														</div>
+														<div class="form-group row">
+															<label for="address" class="col-sm-4 control-label">#i18n{peps.socialworker.admin_header.advanced_search_form_address}</label>
+															<div class="col-sm-8">
+																<input type="text" class="form-control input-sm" id="commune" name="commune" placeholder="Commune" oninput="advancedSearchEmptyField()"/> 
+																<input class="hidden" type="text" id="code-departement"	name="code-departement" />
+																<input class="hidden" type="text" id="code-voie" name="code-voie" />
+																<input class="hidden" type="text" id="num-voie"	name="num-voie" />
+																<input class="hidden" type="text" id="code-commune"	name="code-commune" /> 
+																<input type="text" class="form-control input-sm" id="address" name="address"
+																	placeholder="#i18n{peps.socialworker.admin_header.advanced_search_form_address_placeholder_address}" disabled>
+															</div>
+														</div>
+													</div>
+
+												</div>
+												<div class="text-center">
+													<a class="btn btn-secondary" onclick="reset()">#dskey{sitelabels.site_property.pro_recherche_avancee_btnreinitialiser}</a>
+													<button id="btn-launch-search" type="submit"
+														class="btn btn-primary">#dskey{sitelabels.site_property.pro_recherche_avancee_btnrechercher}</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div></li>
+					</ul>
+					</#if>
+
+					<ul class="nav navbar-nav navbar-right user">
+						<#if user.userLevel==4>
+						<li class="user-menu"><span id="dLabelUserHeader">
+								${dashboard_zone_4}</span></li>
+						<#else> <!-- Classic admin menu -->
+						<li class="dropdown user-menu"><a href="#"
+							class="dropdown-toggle" data-toggle="dropdown"
+							id="dLabelUserHeader"> <span id="zone4"
+								class="hidden-sm hidden-md"> ${dashboard_zone_4}<i
+									class="caret"></i></span>
+						</a>
+							<ul class="dropdown-menu" role="menu"
+								aria-labelledby="dLabelUserHeader">
+								<li><a href="jsp/admin/user/ModifyDefaultUserPassword.jsp"><i
+										class="fa fa-lock"></i>&nbsp;#i18n{portal.admin.admin_home.password}</a>
+								</li>
+								<#if user.accessibilityMode>
+								<li><a href="jsp/admin/DoModifyAccessibilityMode.jsp"
+									title="#i18n{portal.users.admin_header.labelDeactivateAccessibilityMode}"><i
+										class="fa fa-eye"></i>&nbsp;#i18n{portal.users.admin_header.labelDeactivateAccessibilityMode}</a>
+								</li>
+								<#else>
+								<li><a href="jsp/admin/DoModifyAccessibilityMode.jsp"
+									title="#i18n{portal.users.admin_header.labelActivateAccessibilityMode}"><i
+										class="fa fa-eye-close"></i>&nbsp;#i18n{portal.users.admin_header.labelActivateAccessibilityMode}</a>
+								</li></#if>
+								<li class="divider"></li>
+								<li><a href="javascript:return false;"> <i
+										class="fa fa-language"></i>&nbsp;#i18n{portal.admin.admin_home.language}
+								</a>
+									<ul class="list-inline">
+										<#list languages_list as lang>
+										<li><#if current_language==lang.code> <span
+												class="label label-success"></#if> <a
+											href="jsp/admin/DoChangeLanguage.jsp?language=${lang.code}">
+												${lang.name}&nbsp; </a> <#if current_language==lang.code>
+											</span> </#if></li>
+										</#list>
+									</ul></li>
+								<li class="divider"></li>
+								<#if user.userLevel==0>
+								<li><a href="jsp/admin/AdminTechnicalMenu.jsp"
+									title="#i18n{portal.users.admin_header.title.technicalMenu}">
+										<i class="fa fa-wrench"></i>&nbsp;#i18n{portal.users.admin_header.technicalMenu}
+								</a></li>
+								</#if>
+								<#if admin_summary_documentation_url?exists>
+								<li><a href="${admin_summary_documentation_url}"
+									title="#i18n{portal.users.admin_header.title.documentation}">
+										<i class="fa fa-question-circle"></i>&nbsp;#i18n{portal.users.admin_header.documentation}
+								</a></li>
+								</#if>
+							</ul></li></#if>
+						<!-- End user menu -->
+
+						<#if admin_logout_url?has_content>
+						<li class="pull-right">
+						<a href="#" data-toggle="modal" data-target="#modal-deco">
+						<label id="decolink">#i18n{portal.users.admin_header.deconnectionLink}</label>
+						</a> </li>
+						</#if>
+						<input id="deconnectionAction" type="hidden" value="${admin_logout_url}"/>
+						
+						<!-- MODAL DECONEXION  -->
+						<div class="modal fade" id="modal-deco">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header bg-peps-violet">
+										<button type="button" class="close-modal" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+										<h4 class="modal-title">
+											#i18n{peps.socialworker.admin_header.confirmDeco}</h4>
+									</div>
+									<div id="modal-content" class="box-content">
+										<p>#i18n{peps.socialworker.admin_header.message1}</p>
+											<button id="confirm-deco" type="button"
+												class="btn btn-primary" onclick="deconnectionAjax()">
+												#i18n{peps.socialworker.admin_header.btnSend}</button>
+											<a class="btn btn-secondary" data-dismiss="modal" href="">
+												#i18n{peps.socialworker.admin_header.btnCancel}</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
+ 						<!--
+                    <li>
+                      <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i> </a>
+                    </li>
+                  -->
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<!-- Wrapper -->
+		<div id="admin-wrapper">
+			<!-- Close in footer -->
+			<script src="js/plugins/peps/jquery.maskedinput.min.js"></script>
+			<script>
+
+				function reset() {
+					document.getElementById("advanced_search_form").reset();
+					$('#address').attr('disabled', false);
+				}
+
+				function isNumeric(n) {
+					return !isNaN(parseFloat(n)) && isFinite(n);
+				}
+
+				function isDate(txtDate) {
+					var regexdate=/^\d{2}([./-])\d{2}\1\d{4}$/;
+					return txtDate.match(regexdate);
+				}
+
+				function autocompleteAddress($code_departement, $commune, $address){
+					var str = $address.val();
+					var $num_voie= str.substr(0, str.indexOf(' '));
+					var $term= str.substr( str.indexOf(' ')+1);
+					console.info($num_voie+" and "+$term);
+					$('#address').autocomplete({
+						minLength: 0,
+						source: function(request, response) {
+							$.ajax({
+								type: "GET",
+								url: 'jsp/admin/plugins/peps/socialworker/AutoCompleteAdvancedSearchAddress.jsp',
+								data: {
+										code_departement : $code_departement.val(),
+										commune : $commune.val(),
+										term : $term,
+								},
+								messages: {
+									noResults: 'Aucun usager trouvé'
+								},
+								success: function(data) {
+
+									var names = $.map(data, function(items) {
+										return {
+											label: items.lib_voie,
+											value: items.lib_voie,
+											data: items.address
+										};
+									});
+									response(names);
+								}
+							});
+						},
+						select: function(event, ui) {
+							$('#num-voie').val($num_voie);
+							var build_address= $num_voie +" " +ui.item.value;
+							$('#address').val(build_address);
+							var data = ui.item.data;
+							var array= data.split(":");
+							$('#code-voie').val(array[1]);
+							$('#code-commune').val(array[2]);
+							return false;
+						}
+					});
+				}
+				function displayWSData(){
+						console.info("=========SEARCH BY ADDRESS=========");
+						console.info("numVoieAdresse :" + $('#num-voie').val());
+						console.info("codeRueAdresse :" + $('#code-voie').val());
+						console.info("codeCommuneAdresse :" + $('#code-commune').val());
+						console.info("codeDepAdresse :" + $('#code-departement').val());
+						console.info("=========FINISHED=========");
+
+				}
+				$(function($) {
+
+					$("#birthdate").mask("99/99/9999", {
+						placeholder: "JJ/MM/AAAA"
+					});
+					
+					$("#birthdate").keyup(function() {
+						if($(this).val()=="//"){
+							$(this).val("");
+						}
+					});
+
+					$('#commune').keyup(function() {
+							if($(this).val()==""){
+									$("#address").val("");
+									$("#address").attr('disabled', false);
+							}
+
+					});
+
+					$('#address').keyup(function() {
+						// manage cas when address is typed without selected commune
+						// if($('#commune').val()==""){
+						// 		display address error
+						// }
+
+								if ($('#commune').val().substr(0, 5) == "paris" || $('#commune').val().substr(0, 5) == "PARIS") {
+									autocompleteAddress($('#code-departement'),$('#commune'), $('#address'));
+								}
+
+					});
+
+
+					$("#advanced_search_form").on("submit", function(event) {
+						console.info("ONSUBMIT");
+						var error = null;
+						var errorsAdvancedSearchArray = [];
+						$('#errorsAdvancedSearch ul').empty();
+						
+						// if perimeter 2 is selected, make sure name of user is typed
+						if ($('input[id=perimeter]:checked').length == 1) {
+							console.info($(this).value);
+							if ($(this).value=="O" && $('#autocomplete-socialworker-name').val() == "")
+								addError(errorsAdvancedSearchArray, "<li>Veuillez saisir le nom de travailleur social.</li>");
+						}
+
+						// if commune is selected, make sur adress box is filled too
+						if ($('#commune').val().substr(0, 5) == "paris" || $('#commune').val().substr(0, 5) == "PARIS") {
+							if ($('#address').val() == "") {
+								addError(errorsAdvancedSearchArray, "<li>Veuillez selectionner la voie</li>");
+							}
+						}
+						// at least one critera before launch search
+						if ($('#lastname').val() == "" && $('#firstname').val() == "" && $('#birthdate').val() == "" && $('#isis-num').val() == "" && $('#caf-num').val() == "" && $('#commune').val() == "") {
+							addError(errorsAdvancedSearchArray, "<li>Veuillez préciser au moins un critère</li>");
+						} else {
+							if ($('#isis-num').val() != "" && !isNumeric($('#isis-num').val())) {
+								addError(errorsAdvancedSearchArray, "<li>Le champ numéro ISIS doit être numérique.</li>");
+							}
+							if ($('#caf-num').val() != "" && !isNumeric($('#caf-num').val()))
+								addError(errorsAdvancedSearchArray, "<li>Le champ numéro CAF doit être numérique.</li>");
+
+							if ($('#birthdate').val() != "" && !isDate($('#birthdate').val()))
+								addError(errorsAdvancedSearchArray, "<li>Veuillez saisir une date valide.</li>");
+						}
+
+						if (errorsAdvancedSearchArray.length != 0) {
+							$('#errorsAdvancedSearch').show();
+							for (var i = 0; i < errorsAdvancedSearchArray.length; i++) {
+								$('#errorsAdvancedSearch ul').append(errorsAdvancedSearchArray[i]);
+							}
+							// for debugging
+							displayWSData();
+							return false;
+						} else {
+							return true;
+						}
+					});
+
+
+					//autocomplete commune
+					$('#commune').autocomplete({
+						minLength: 0,
+						source: function(request, response) {
+							$.ajax({
+								type: "GET",
+								url: 'jsp/admin/plugins/peps/socialworker/AutoCompleteAdvancedSearchCommune.jsp',
+								data: 'term=' + $('#commune').val(),
+								messages: {
+									noResults: 'Aucun usager trouvé'
+								},
+								success: function(data) {
+									var names = $.map(data, function(items) {
+										return {
+											label: items.nom_commune,
+											value: items.nom_commune,
+											data: items.code_departement
+										};
+									});
+									response(names);
+								}
+							});
+						},
+						select: function(event, ui) {
+							var $selected_commune= ui.item.value;
+							var $selected_commune_departement= ui.item.data;
+							$('#commune').val($selected_commune);
+							$('#code-departement').val($selected_commune_departement);
+							if ( ( $('#commune').val().substr(0, 5) == "paris" || $('#commune').val().substr(0, 5) == "PARIS" )  && /^\d+$/.test( $('#commune').val().substr(6, 8) ) ) {
+								$("#address").attr('disabled', false);
+							} else {
+								$("#address").attr('disabled', true);
+							}
+						},
+						change: function(event, ui) {
+						if (!(ui.item)) {
+							$('#commune').val("");
+						}
+					}
+					});
+
+
+				});
+
+				function addError(errorsAdvancedSearchArray, error) {
+					if (error != null) {
+						errorsAdvancedSearchArray.push(error);
+					}
+				}
+
+				$('#modal-advanced-search').on('show.bs.modal', function () {
+					$('#errorsAdvancedSearch ul').empty();
+					$('#errorsAdvancedSearch').hide();
+					})
+					
+					
+				$(document).ready(function(){
+					$('#btn-launch-search').prop('disabled',true);
+				});
+				
+				function advancedSearchEmptyField(){
+					if( ( $('#lastname').val().length ===0 ) && ( $('#firstname').val().length ===0 ) && ( $('#birthdate').val().length ===0 ) && ( $('#isis-num').val().length ===0 ) && ( $('#caf-num').val().length ===0 ) && ( $('#commune').val().length ===0 ) ) {
+						$('#btn-launch-search').prop('disabled', true);            
+					}else{ //there is a field that is not empty
+						$('#btn-launch-search').prop('disabled',false);
+					}
+				}
+				
+
+				function deconnectionAjax() {
+					
+					var link = 	$('#deconnectionAction').val();
+					$.ajax({
+						url : link,
+						success : function(data) {
+							window.location.href = "jsp/admin/AdminMessage.jsp"; 
+						}
+					});
+				}
+				
+				
+
+
+			</script>
